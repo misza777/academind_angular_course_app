@@ -9,11 +9,16 @@ import { Recipe } from '../recipe.model';
 export class RecipeListComponent implements OnInit {
   // budujemy model recepty
 recipes: Recipe[] = [
-  new Recipe('Zupa Pomidorowa', 'Superowa zupa dla kazdego!', "https://www.mniammniam.com/obrazki/zupa_pomidorowa.jpg" )
+  new Recipe('Zupa Pomidorowa', "Superowa zupa dla kazdego!", ",https://www.mniammniam.com/obrazki/zupa_pomidorowa.jpg" ),
+  new Recipe('Zupa Pomidorowa', "Superowa zupa dla kazdego!", "https://www.mniammniam.com/obrazki/zupa_pomidorowa.jpg" )
 ];
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  getNewRecipe= () => {
+
   }
 
 }
