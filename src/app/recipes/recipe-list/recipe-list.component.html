@@ -3,9 +3,10 @@
     <button class="btn btn-success" (click)="getNewRecipe()">New Recipe</button>
   </div>
 </div>
+<hr>
 <div class="row">
   <div class="col-xs-12">
-
-    <app-recipe-item *ngFor="let recipeEl of recipes" [recipeItem]='recipeEl'></app-recipe-item>
+    <!-- przekazujemy event click z recipe-item => recipe-list => recipes  po to by uzyskac detale-->
+    <app-recipe-item *ngFor="let recipeEl of recipes" [recipeItem]='recipeEl' (recipeSelected)="onRecipeSelected(recipeEl)"></app-recipe-item>
   </div>
 </div>
