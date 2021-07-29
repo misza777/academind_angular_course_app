@@ -1,5 +1,6 @@
 import { Component, OnInit, Output,EventEmitter } from '@angular/core';
 import { Recipe } from '../recipe.model';
+import { RecipeService } from '../recipe.service';
 
 @Component({
   selector: 'app-recipe-list',
@@ -9,14 +10,13 @@ import { Recipe } from '../recipe.model';
 export class RecipeListComponent implements OnInit {
   //drugi event click przekazywany z recipe-list do recipes
 @Output() recipeWasSelected = new EventEmitter<Recipe>();
-  // budujemy model recepty
-recipes: Recipe[] = [
-  new Recipe('Zupa Pomidorowa', "Superowa zupa dla kazdego na diecie!", "https://www.mniammniam.com/obrazki/zupa_pomidorowa.jpg" ),
-  new Recipe('Zupa pieczarkowa z makaronem', "Extra pyszna zupa dla kazdego łasucha!", "https://www.mniammniam.com/obrazki/zupa_pieczarkimakaron4.jpg" )
-];
-  constructor() { }
 
-  ngOnInit(): void {
+recipes: Recipe[];
+
+  constructor(private recipeService: RecipeService) { }
+
+  ngOnInit() {
+    this.recipes = this.recipeService.getRecipes();
   }
 
   getNewRecipe= () => {
