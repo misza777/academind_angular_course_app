@@ -1,6 +1,10 @@
+import { EventEmitter } from "@angular/core";
 import {Recipe} from "./recipe.model";
 
 export class RecipeService {
+  //zawiera dane Recipe
+recipeSelected = new EventEmitter<Recipe>();
+
 
   // budujemy model recepty, z private - nie mamy dostepu z zewnatrz
 private recipes: Recipe[] = [

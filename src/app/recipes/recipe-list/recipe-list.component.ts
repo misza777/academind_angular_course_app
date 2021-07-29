@@ -1,4 +1,6 @@
-import { Component, OnInit, Output,EventEmitter } from '@angular/core';
+import { Component, OnInit,
+  // Output,EventEmitter
+ } from '@angular/core';
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
 
@@ -9,7 +11,7 @@ import { RecipeService } from '../recipe.service';
 })
 export class RecipeListComponent implements OnInit {
   //drugi event click przekazywany z recipe-list do recipes
-@Output() recipeWasSelected = new EventEmitter<Recipe>();
+// @Output() recipeWasSelected = new EventEmitter<Recipe>();
 
 recipes: Recipe[];
 
@@ -22,7 +24,7 @@ recipes: Recipe[];
   getNewRecipe= () => {
   }
 
-  onRecipeSelected(recipe: Recipe) {
-    this.recipeWasSelected.emit(recipe);
-  }
+  // onRecipeSelected(recipe: Recipe) {
+  //   this.recipeWasSelected.emit(recipe);
+  // }
 }
