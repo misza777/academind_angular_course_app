@@ -2,7 +2,8 @@
   <div class="col-xs-10">
     <!-- editing area where we can add recipe -->
     <app-shopping-edit
-    (ingredientAdded)="onIngredientAdded($event)"></app-shopping-edit>
+    ></app-shopping-edit>
+    <!-- (ingredientAdded)="onIngredientAdded($event)" -->
     <hr>
     <ul class="list-group" >
       <a href="#" class="list-group-item" style="cursor: pointer" *ngFor="let ingredientItem of ingredients">
