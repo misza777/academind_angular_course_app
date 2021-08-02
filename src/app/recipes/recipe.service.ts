@@ -11,7 +11,8 @@ recipeSelected = new EventEmitter<Recipe>();
 
   // budujemy model recepty, z private - nie mamy dostepu z zewnatrz
 private recipes: Recipe[] = [
-  new Recipe('Zupa Pomidorowa',
+  new Recipe(
+    'Zupa Pomidorowa',
   "Superowa zupa dla kazdego na diecie!",
   "https://www.mniammniam.com/obrazki/zupa_pomidorowa.jpg",
    [
@@ -36,6 +37,5 @@ getRecipes() {
 addIngredientsToShoppingList(ingredients: Ingredient[]) {
 
 this.slService.addIngredients(ingredients);
-
  }
 }

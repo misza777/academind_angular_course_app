@@ -24,12 +24,9 @@ export class ShoppingEditComponent implements OnInit {
   }
   onAddItem() {
     // const bo nie zmieniamy wartosci zmiennych
-    console.log(this.nameInputRef);
-    console.log(this.amountInputRef);
     const ingName = this.nameInputRef.nativeElement.value;
     const ingAmount = this.amountInputRef.nativeElement.value;
 
-    console.log(ingName, ingAmount);
 
     const newIngredient = new Ingredient(ingName, ingAmount);
     // emisja eventu

@@ -9,6 +9,7 @@ private ingredients: Ingredient[] = [
   ];
 
   getIngredients() {
+    //slice() kopiuje tablice! tzn. daje referencje
     return this.ingredients.slice();
   }
 
