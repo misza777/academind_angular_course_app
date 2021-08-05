@@ -35,7 +35,12 @@ getRecipes() {
 }
 
 addIngredientsToShoppingList(ingredients: Ingredient[]) {
-
 this.slService.addIngredients(ingredients);
+ }
+
+ getRecipe(id: number) {
+  //  return this.recipes.slice()[id];
+  console.log(id);
+   return this.recipes[id];
  }
 }

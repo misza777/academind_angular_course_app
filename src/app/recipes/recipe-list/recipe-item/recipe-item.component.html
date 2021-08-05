@@ -1,5 +1,11 @@
 <!-- href="#" -->
-<a style="cursor:pointer" class="list-group-item clearfix" (click)="getRecipeDetail()">
+<!-- (click)="getRecipeDetail()" -->
+<!-- mozna dac norlamlnie routerLink ale w nawiasach mozna dynamicznie przekazywac dane -->
+<a
+style="cursor:pointer"
+[routerLink]="[id]"
+routerLinkActive="active"
+class="list-group-item clearfix">
   <div class="pull-left">
 
     <h4 class="list-group-item-heading">{{recipeItem.name}}</h4>

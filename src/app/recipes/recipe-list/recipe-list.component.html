@@ -1,13 +1,13 @@
 <div class="row">
   <div class="col-xs-12">
-    <button class="btn btn-success" (click)="getNewRecipe()">New Recipe</button>
+    <button class="btn btn-success" (click)="onNewRecipe()">New Recipe</button>
   </div>
 </div>
 <hr>
 <div class="row">
   <div class="col-xs-12">
     <!-- przekazujemy event click z recipe-item => recipe-list => recipes  po to by uzyskac detale-->
-    <app-recipe-item *ngFor="let recipeEl of recipes" [recipeItem]='recipeEl'>
+    <app-recipe-item *ngFor="let recipeEl of recipes;let i = index" [recipeItem]='recipeEl' [id]="i">
       <!-- (recipeSelected)="onRecipeSelected(recipeEl)" -->
     </app-recipe-item>
   </div>
