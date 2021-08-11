@@ -1,6 +1,10 @@
-import { Component, ElementRef, OnInit,
+import { Component,
+  // ElementRef,
+  OnInit,
   // Output,
-  ViewChild, EventEmitter  } from '@angular/core';
+  // ViewChild, EventEmitter
+  } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import {Ingredient} from '../../shared/ingredient.model'
 import { ShoppingListService } from '../shopping.list.service';
 @Component({
@@ -10,8 +14,8 @@ import { ShoppingListService } from '../shopping.list.service';
 })
 export class ShoppingEditComponent implements OnInit {
 // odczytanie wartoscie referencji
-  @ViewChild('nameInput') nameInputRef: ElementRef;
-  @ViewChild('amountInput') amountInputRef: ElementRef;
+  // @ViewChild('nameInput') nameInputRef: ElementRef;
+  // @ViewChild('amountInput') amountInputRef: ElementRef;
 
 //emit event
 // @Output() ingredientAdded = new EventEmitter<Ingredient>();
@@ -22,13 +26,16 @@ export class ShoppingEditComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  onAddItem() {
+  onAddItem(form: NgForm) {
     // const bo nie zmieniamy wartosci zmiennych
-    const ingName = this.nameInputRef.nativeElement.value;
-    const ingAmount = this.amountInputRef.nativeElement.value;
+    // const ingName = this.nameInputRef.nativeElement.value;
+    // const ingAmount = this.amountInputRef.nativeElement.value;
 
+    // form
+    const value = form.value;
 
-    const newIngredient = new Ingredient(ingName, ingAmount);
+    const newIngredient = new Ingredient(value.name, value.amount);
+    // const newIngredient = new Ingredient(ingName, ingAmount);
     // emisja eventu
     // this.ingredientAdded.emit(newIngredient);
 
