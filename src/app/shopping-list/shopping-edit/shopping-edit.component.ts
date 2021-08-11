@@ -1,10 +1,13 @@
 import { Component,
   // ElementRef,
   OnInit,
+  OnDestroy,
+  ViewChild,
   // Output,
   // ViewChild, EventEmitter
   } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import {Ingredient} from '../../shared/ingredient.model'
 import { ShoppingListService } from '../shopping.list.service';
 @Component({
@@ -12,8 +15,15 @@ import { ShoppingListService } from '../shopping.list.service';
   templateUrl: './shopping-edit.component.html',
   styleUrls: ['./shopping-edit.component.css']
 })
-export class ShoppingEditComponent implements OnInit {
-// odczytanie wartoscie referencji
+export class ShoppingEditComponent implements OnInit, OnDestroy {
+@ViewChild('f') slForm: NgForm;
+
+subscription: Subscription;
+editMode = false;
+editedItemIndex: number;
+editedItem: Ingredient;
+
+  // odczytanie wartoscie referencji
   // @ViewChild('nameInput') nameInputRef: ElementRef;
   // @ViewChild('amountInput') amountInputRef: ElementRef;
 
@@ -24,8 +34,20 @@ export class ShoppingEditComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.slService.startedEditingItem.subscribe(
+      (index: number) =>{
+this.editedItemIndex = index;
+this.editMode = true;
+this.editedItem = this.slService.getIngredient(index);
+this.slForm.setValue({
+  name: this.editedItem.name,
+  amount: this.editedItem.amount,
+})
+      }
+    );
   }
+
   onAddItem(form: NgForm) {
     // const bo nie zmieniamy wartosci zmiennych
     // const ingName = this.nameInputRef.nativeElement.value;
@@ -44,5 +66,10 @@ export class ShoppingEditComponent implements OnInit {
     this.slService.addIngredient(newIngredient);
 
   }
+
+  //no memory leak
+ngOnDestroy(){
+  this.subscription.unsubscribe();
+}
 
 }

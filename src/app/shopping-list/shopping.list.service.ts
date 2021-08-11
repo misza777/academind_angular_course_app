@@ -4,6 +4,7 @@ import {Ingredient} from "../shared/ingredient.model";
 export class ShoppingListService {
 // ingredientsChanged = new EventEmitter<Ingredient[]>()
 ingredientsChanged = new Subject<Ingredient[]>()
+startedEditingItem = new Subject<number>()
 
 private ingredients: Ingredient[] = [
     new Ingredient('Apples', 5),
@@ -13,6 +14,10 @@ private ingredients: Ingredient[] = [
   getIngredients() {
     //slice() kopiuje tablice! tzn. daje referencje
     return this.ingredients.slice();
+  }
+
+  getIngredient(index: number) {
+    return this.ingredients[index];
   }
 
   addIngredient(ingredient: Ingredient) {
