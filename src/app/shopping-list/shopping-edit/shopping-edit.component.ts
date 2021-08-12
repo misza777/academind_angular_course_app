@@ -48,7 +48,7 @@ this.slForm.setValue({
     );
   }
 
-  onAddItem(form: NgForm) {
+  onSubmit(form: NgForm) {
     // const bo nie zmieniamy wartosci zmiennych
     // const ingName = this.nameInputRef.nativeElement.value;
     // const ingAmount = this.amountInputRef.nativeElement.value;
@@ -66,7 +66,10 @@ if (this.editMode) {
   this.slService.updateIngredient(this.editedItemIndex, newIngredient);
 } else {
   this.slService.addIngredient(newIngredient);
-}};
+}
+this.editMode = false;
+form.reset();
+};
 
   //no memory leak
 ngOnDestroy(){
