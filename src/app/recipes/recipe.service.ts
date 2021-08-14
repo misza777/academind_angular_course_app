@@ -5,10 +5,14 @@ import {
 import {Recipe} from "./recipe.model";
 import { Ingredient } from "../shared/ingredient.model";
 import { ShoppingListService } from "../shopping-list/shopping.list.service";
+import { Subject } from "rxjs";
 
 
 @Injectable()
 export class RecipeService {
+recipesChanged = new Subject<Recipe[]>();
+
+
   //zawiera dane Recipe
 // recipeSelected = new EventEmitter<Recipe>();
 // recipeSelected = new Subject<Recipe>();
@@ -46,5 +50,16 @@ this.slService.addIngredients(ingredients);
   //  return this.recipes.slice()[id];
   console.log(id);
    return this.recipes[id];
+ }
+
+ addRecipe(recipe: Recipe) {
+  this.recipes.push(recipe);
+  //emitujemy nasluchiwanie
+  this.recipesChanged.next(this.recipes.slice());
+ }
+ updateRecipe(index: number, newRecipe: Recipe) {
+   this.recipes[index] = newRecipe;
+   //emitujemy nasluchiwanie i nasluchujemy w recipe-list
+   this.recipesChanged.next(this.recipes.slice());
  }
 }
