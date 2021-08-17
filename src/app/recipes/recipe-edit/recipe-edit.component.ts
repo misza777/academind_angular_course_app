@@ -60,6 +60,13 @@ onCancel() {
   this.router.navigate(['../'], {relativeTo: this.route});
 }
 
+onDeleteIngredient(index:number){
+ (<FormArray>this.recipeForm.get('ingredients')).removeAt(index);
+}
+
+// clearing all items in a FormArray.
+// (<FormArray>this.recipeForm.get('ingredients')).clear();
+
   private initForm() {
     let recipeName = '';
     let recipeImagePath = '';

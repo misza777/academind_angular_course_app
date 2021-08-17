@@ -35,7 +35,7 @@ editedItem: Ingredient;
   }
 
   ngOnInit() {
-    this.slService.startedEditingItem.subscribe(
+    this.subscription = this.slService.startedEditingItem.subscribe(
       (index: number) =>{
 this.editedItemIndex = index;
 this.editMode = true;
