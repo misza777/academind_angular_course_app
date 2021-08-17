@@ -6,6 +6,7 @@ import {Recipe} from "./recipe.model";
 import { Ingredient } from "../shared/ingredient.model";
 import { ShoppingListService } from "../shopping-list/shopping.list.service";
 import { Subject } from "rxjs";
+import { ThrowStmt } from "@angular/compiler";
 
 
 @Injectable()
@@ -60,6 +61,13 @@ this.slService.addIngredients(ingredients);
  updateRecipe(index: number, newRecipe: Recipe) {
    this.recipes[index] = newRecipe;
    //emitujemy nasluchiwanie i nasluchujemy w recipe-list
+   this.recipesChanged.next(this.recipes.slice());
+ }
+
+ deleteRecipe(index:number) {
+  //  remove el
+   this.recipes.splice(index,1);
+   //emit a copy 
    this.recipesChanged.next(this.recipes.slice());
  }
 }
